@@ -1,5 +1,6 @@
 package io.github.libai8723;
 
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 
 @Aspect
@@ -17,7 +18,7 @@ public class Audience {
      * empty. The method itself is just a marker, giving the @Pointcut annotation something
      * to attach itself to
      */
-    @Pointcut("execution(** io.github.libai8723.Performance.perform(..))")
+    @Pointcut(value = "execution(* io.github.libai8723.Performance.perform(..))")
     public void performance() {}
 
     // the same meaning with the longer expression
@@ -38,5 +39,18 @@ public class Audience {
     @AfterThrowing("performance()")
     public void demandRefund() {
         System.out.println("Demanding a refund");
+    }
+
+    @Around("performance()")
+    public void watchPerformance(ProceedingJoinPoint jp) {
+        try {
+            System.out.println("IAround Advice: Silencing the cell phones");
+            System.out.println("In Around Advice: Taking seats");
+            System.out.println("before execute the advised method, method signature is: " + jp.getSignature().toLongString());
+            jp.proceed();
+            System.out.println("In Around Advice: CLAP CLAP CLAP!!!");
+        } catch (Throwable e) {
+            System.out.println("In Around Advice: Demanding a refund");
+        }
     }
 }
