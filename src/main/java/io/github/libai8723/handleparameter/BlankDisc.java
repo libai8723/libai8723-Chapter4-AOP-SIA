@@ -4,17 +4,7 @@ import java.util.*;
 
 public class BlankDisc implements CompactDisc {
 
-    private String title;
-    private String artist;
     private Map<Integer, String> tracks;
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setArtist(String artist) {
-        this.artist = artist;
-    }
 
     public void setTracks(Map<Integer, String> tracks) {
         this.tracks = tracks;
@@ -26,16 +16,12 @@ public class BlankDisc implements CompactDisc {
         int[] nums = new int[trackNumbers.size()];
 
         int idx = 0;
-        for (Integer integer: trackNumbers
-             ) {
+        for (Integer integer : trackNumbers ) {
             nums[idx] = integer;
             idx++;
         }
-
         Arrays.sort(nums);
-
-        for (int i: nums
-             ) {
+        for ( int i : nums ) {
             playTrack(i);
         }
 
@@ -43,15 +29,13 @@ public class BlankDisc implements CompactDisc {
 
     @Override
     public void playTrack(int track) {
-        System.out.println("Track " + track + " : " + this.tracks.get(track) + "is playing");
+        System.out.println("Track " + track + " : " + this.tracks.get(track) + " is playing");
     }
 
     @Override
     public List<Integer> getTracks() {
         Set<Integer> set = this.tracks.keySet();
-        List<Integer> list = new ArrayList<>();
-
-        list.addAll(set);
+        List<Integer> list = new ArrayList<>(set);
         Collections.sort(list);
         return list;
     }

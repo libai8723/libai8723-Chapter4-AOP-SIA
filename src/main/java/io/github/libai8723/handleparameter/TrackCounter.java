@@ -12,7 +12,7 @@ public class TrackCounter {
 
     private Map<Integer, Integer> trackCounts = new HashMap<>();
 
-    @Pointcut("execution(* io.github.libai8723.handleparameter.CompactDisc.playTrack(int)) && args(trackNumber)")
+    @Pointcut("execution(* io.github.libai8723.handleparameter.BlankDisc.playTrack(int)) && args(trackNumber)")
     public void trackPlayed(int trackNumber) {
     }
 
@@ -24,6 +24,6 @@ public class TrackCounter {
 
     public int getPlayCount(int trackNumber) {
         //awesome statement
-        return trackCounts.containsKey(trackNumber) ? trackCounts.get(trackNumber) : 0;
+        return trackCounts.getOrDefault(trackNumber, 0);
     }
 }
