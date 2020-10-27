@@ -44,13 +44,13 @@ public class Audience {
     @Around("performance()")
     public void watchPerformance(ProceedingJoinPoint jp) {
         try {
-            System.out.println("IAround Advice: Silencing the cell phones");
-            System.out.println("In Around Advice: Taking seats");
-            System.out.println("before execute the advised method, method signature is: " + jp.getSignature().toLongString());
+            System.out.println("[Around Advice]: Silencing the cell phones");
+            System.out.println("[Around Advice]: Taking seats");
+            System.out.println("[Around Advice]: Before execute the advised method, method signature is: " + jp.getSignature().toLongString());
             jp.proceed();
-            System.out.println("In Around Advice: CLAP CLAP CLAP!!!");
+            System.out.println("[Around Advice]: CLAP CLAP CLAP!!!");
         } catch (Throwable e) {
-            System.out.println("In Around Advice: Demanding a refund");
+            System.out.println("[Around Advice]: Demanding a refund");
         }
     }
 }
