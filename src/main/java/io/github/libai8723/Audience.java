@@ -24,21 +24,21 @@ public class Audience {
     // the same meaning with the longer expression
     @Before("performance()")
     public void silenceCellPhones() {
-        System.out.println("Silencing cell phones");
+        System.out.println("[Bore Advice]: Silencing cell phones");
     }
 
     @Before("performance()")
     public void takeSeats() {
-        System.out.println("Taking seats");
+        System.out.println("[Before Advice]:Taking seats");
     }
 
     @AfterReturning("performance()")
     public void applause() {
-        System.out.println("CLAP CLAP CLAP!!!");
+        System.out.println("[After Returning]:CLAP CLAP CLAP!!!");
     }
     @AfterThrowing("performance()")
     public void demandRefund() {
-        System.out.println("Demanding a refund");
+        System.out.println("[After Twing]:Demanding a refund");
     }
 
     @Around("performance()")
